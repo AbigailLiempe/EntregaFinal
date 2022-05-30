@@ -1,0 +1,21 @@
+{% extends "AppBlog/padre.html" %}
+
+{% load static %}
+
+
+{% block contenidoModificable %}
+
+<p>Solta tu imagen por aca.</p>
+
+<form action="" method="POST" > {%csrf_token%}
+
+        {{form.as_p}}
+
+
+
+    <input type="submit", value="Subir Imagen", style="color:red">
+
+
+</form>
+{% endblock %}
+

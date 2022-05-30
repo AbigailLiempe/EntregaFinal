@@ -1,4 +1,4 @@
-"""Proyecto1 URL Configuration
+"""EquipoBlog URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -14,18 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from Proyecto1.views import miNombre, saludo, segunda_vista, diaDeHoy, miNombre,edad,probandoTemplate
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('saludo/',saludo),
-    path("segunda/",segunda_vista),
-    path("today/", diaDeHoy),
-    path("name/<nombre>", miNombre),
-    path('age/<edad>', edad),
-    path('plantilla/',probandoTemplate ),
+    path('AppBlog/', include('AppBlog.urls'))
 ]
-  
-
-

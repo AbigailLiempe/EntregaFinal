@@ -7,6 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-   <h1>Henlo, mi nombre es Aikosus</h1>
+    <p>Nombre del Equipo: <i>{{ equipo.nombre }} </i></p>
+    <p>Ident: <i>{{ equipo.identificacion }}</i></p>
+    <p>Area: <i>{{ equipo.area }} </i></p>
+    <p>
+        <a href="{% url 'ListEquipo' %}">Regresar</a>
+    </p>
 </body>
 </html>

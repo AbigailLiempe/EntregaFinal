@@ -1,0 +1,32 @@
+{% extends "AppBlog/padre.html" %}
+
+{% load static %}
+
+
+{% block contenido2 %}
+
+{% for p in lideres %}
+
+
+<li>{{p}}</li>
+
+<button>
+
+    <a href="{% url 'BorrarLider' p.nombre %}"> Borrar </a>
+</button>
+
+<button>
+    <a href="{% url 'EditarLider' p.nombre %}"> Editar </a>
+
+</button>
+
+
+
+{% endfor %}
+
+<br>
+<br>
+
+{% endblock %}
+
+

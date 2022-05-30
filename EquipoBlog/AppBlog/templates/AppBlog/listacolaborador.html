@@ -1,0 +1,43 @@
+{% extends "AppCoder/padre.html" %}
+    
+
+
+{% block contenidoModificable %}
+    <h1>Colaboladores de equipos</h1>
+{% endblock %}
+
+{% block contenido2 %}
+
+
+
+    
+    <a href="">Crear</a>
+
+    <ul>
+
+        {% for colaborador in object_list %} 
+
+        <li>
+
+            <p>Nombre: {{colaborador.nombre}}</p>
+            <p>Apellido: {{colaborador.apellido}}</p>
+
+            <p>
+
+                <a href="">Ver</a>
+                <a href="">Editar</a>
+                <a href="">Borrar</a>
+
+
+
+            </p>
+
+
+        </li>
+
+        {% endfor %}
+
+
+    </ul>
+
+{% endblock %}

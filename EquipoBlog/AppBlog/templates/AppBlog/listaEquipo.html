@@ -1,0 +1,47 @@
+{% extends "AppBlog/padre.html" %}
+    
+
+{% block contenidoModificable %}
+    <h1>Equipos de Trabajo</h1>
+{% endblock %}
+
+{% block contenidoAvatar %}
+
+
+
+{% endblock %}
+
+{% block contenido2 %}
+
+
+
+    
+    <a href="{% url 'New' %}">Armemos un nuevo Equipo</a>
+
+    <ul>
+
+        {% for equipo in object_list %} 
+
+        <li>
+
+            <p>Nombre: {{equipo.nombre}}</p>
+
+            <p>
+
+                <a href="{% url 'Detail' curso.id %}">Ver</a>
+                <a href="{% url 'Edit' curso.id %}">Editar</a>
+                <a href="{% url 'Delete' curso.id %}">Borrar</a>
+
+
+
+            </p>
+
+
+        </li>
+
+        {% endfor %}
+
+
+    </ul>
+
+{% endblock %}
