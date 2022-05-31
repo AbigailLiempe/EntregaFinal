@@ -1,20 +1,14 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.http import HttpResponse
-from django.shortcuts import render
 from AppBlog.forms import EquipoFormulario, LiderFormulario, RegistroFormulario, AvatarFormulario
 from AppBlog.models import Equipo, Lider, Avatar, Colaborador
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
+from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import login, authenticate
-from django.core.files.storage import FileSystemStorage
-
-
 
 
 
@@ -85,7 +79,7 @@ def agregarImagen(request):
 
             informacion = miFormulario.cleaned_data
 
-            avatar = Avatar(user=request.user, imagen=informacion['imagen'])
+            avatar = AvatarFormulario(user=request.user, imagen=informacion['imagen'])
 
             avatar.save()
 
@@ -113,7 +107,7 @@ def agregarEquipo(request):
 
             informacion = miFormulario.cleaned_data
 
-            curso = Equipo(nombre=informacion['nombre'], identificacion=informacion['identificacion'], area=informacion['area'])  
+            curso = EquipoFormulario(nombre=informacion['nombre'], identificacion=informacion['identificacion'], area=informacion['area'])  
 
             curso.save()
 
@@ -156,7 +150,7 @@ def buscar(request):
     if request.GET['identificacion']:
 
         identificacion = request.GET['identificacion']      #
-        equipos = Equipo.objects.filter(identificacion__iexact=identificacion)
+        equipos = EquipoFormulario.objects.filter(identificacion__iexact=identificacion)
 
         return render(request, "AppBlog/resultadosBusqueda.html", {"equipos":equipos, "identificacion":identificacion})
 
@@ -182,7 +176,7 @@ def agregarLider(request):
 
             info = miFormulario.cleaned_data    
             
-            profe = Lider(nombre=info['nombre'], apellido=info['apellido'],
+            profe = LiderFormulario(nombre=info['nombre'], apellido=info['apellido'],
             email=info['email'],area=info['area'])
 
             profe.save()
@@ -203,7 +197,7 @@ def agregarLider(request):
 @login_required
 def borrarLideres(request, lider_nombre):
 
-    lider = Lider.objects.get(nombre=lider_nombre)
+    lider = LiderFormulario.objects.get(nombre=lider_nombre)
     
     lider.delete()
     
@@ -215,7 +209,7 @@ def borrarLideres(request, lider_nombre):
 
 
 @login_required
-def editarLideres(request, lider_nombre):
+def editarLideres(request, lider_nombre, lider=None):
 
     lider = lider.objects.get(nombre=lider_nombre)
 
@@ -249,7 +243,7 @@ def editarLideres(request, lider_nombre):
 
 def listaLideres(request):
 
-    lideres = Lider.objects.all() 
+    lideres = LiderFormulario.objects.all() 
 
 
     contexto = {"Lider":lideres}
@@ -290,34 +284,34 @@ def editarUsuario(request):
 #Equipos
 class EquipoList(LoginRequiredMixin, ListView):
 
-    model = Equipo
+    model = EquipoFormulario
     template_name = "AppBlog/listaEquipo.html"
 
 
 class EquipoDetalle(DetailView):
 
-    model = Equipo
+    model = EquipoFormulario
     template_name = "AppBlog/equipoDetalle.html"
 
 
 
 class EquipoCreacion(CreateView):
 
-    model = Equipo
+    model = EquipoFormulario
     success_url = "/AppBlog/equipo/lista"
     fields = ['nombre', 'identificacion', 'area']
 
 
 class EquipoUpdate(UpdateView):
 
-    model = Equipo
+    model = EquipoFormulario
     success_url = "/AppBlog/equipo/lista"
     fields = ['nombre', 'identificacion', 'area']
 
 
 class EquipoDelete(DeleteView):
 
-    model = Equipo
+    model = EquipoFormulario
     success_url = "/AppBlog/equipo/lista"
 
 
@@ -325,7 +319,7 @@ class EquipoDelete(DeleteView):
 class ColaboradorLista(LoginRequiredMixin, ListView):
 
     model = Colaborador
-    template_name = "AppCoder/listacolaborador.html"
+    template_name = "AppBlog/listacolaborador.html"
 
 
 

@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from AppBlog.models import Avatar
 
+
 class EquipoFormulario(forms.Form):
 
     curso = forms.CharField(max_length=30)
