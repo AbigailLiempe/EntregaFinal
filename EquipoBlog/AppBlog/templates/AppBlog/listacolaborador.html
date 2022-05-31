@@ -24,10 +24,10 @@
 
             <p>
 
-                <a href="">Ver</a>
-                <a href="">Editar</a>
-                <a href="">Borrar</a>
-
+                 <a href="{% url 'Detail' colaborador.id %}">Ver</a>
+                 <a href="{% url 'Edit' colaborador.id %}">Editar</a>
+                 <a href="{% url 'Delete' colaborador.id %}">Borrar</a>
+              
 
 
             </p>
