@@ -322,7 +322,7 @@ class EquipoDelete(DeleteView):
 
 
 
-class ColaboradorList(LoginRequiredMixin, ListView):
+class ColaboradorLista(LoginRequiredMixin, ListView):
 
     model = Colaborador
     template_name = "AppCoder/listacolaborador.html"
