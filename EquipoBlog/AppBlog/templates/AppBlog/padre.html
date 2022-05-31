@@ -34,10 +34,13 @@
 
                 {% with first_image=user.avatar_set.first %} 
                     {% if first_image %} 
+
                         <a href="{{ first_image.imagen.url }}" target="_blank">
-                        <img src="{{ first_image.imagen.url }}" height="40px">
+                        <img src="{{ first_image.imagen.url }}" height="80px">
+
                     {% endif %}
                 {% endwith %} 
+                
                 <a class="navbar-brand" href="{% url 'Subir Avatar' %}">Añadir Avatar</a>
                 <a class="btn btn-primary" href="{% url 'Logout' %}">Cerrar Sesión</a>
                 {% endif %}
