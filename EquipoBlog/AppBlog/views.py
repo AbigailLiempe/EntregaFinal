@@ -85,7 +85,7 @@ def agregarImagen(request):
 
             informacion = miFormulario.cleaned_data
 
-            avatar = Avatar(user=request.user, imagen1=informacion['imagen'])
+            avatar = Avatar(user=request.user, imagen=informacion['imagen'])
 
             avatar.save()
 
@@ -139,6 +139,9 @@ def agregarColaborador(request):
 
     return render(request, "AppBlog/colaborador.html")
 
+def about(request):
+      
+    return render(request, "AppBlog/about.html")
 
 @login_required
 def busquedaEquipo(request):
