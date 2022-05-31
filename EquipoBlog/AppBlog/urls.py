@@ -10,8 +10,8 @@ urlpatterns = [
     
     path("addColaborador/", views.agregarColaborador, name="addColaboradores"),
     path("addPublicacion/", views.agregarPublicacion, name='addPublicacion'),
-    path('colab/lista', views.ColaboradorLista.as_view(), name='listacolaborador'),
-       
+    #path('colab/lista', views.ColaboradorLista.as_view(), name='listacolaborador'),
+
     path("addLider/", views.agregarLider, name='addLideres'),
     path("listaLider", views.listaLideres, name="ListaLideres"),
     path("chauLider/<lider_nombre>", views.borrarLideres, name="BorrarLider"),
