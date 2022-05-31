@@ -19,7 +19,7 @@ urlpatterns = [
     path("addEquipos/", views.agregarEquipo, name='addEquipo'),    
     path("busquedaEquipo/", views.busquedaEquipo, name="BusquedaEquipo"),
     path('equipo/lista', views.EquipoList.as_view(), name='ListEquipo'),
-    path(r'^(?P<pk>\d+)$', views.EquipoDetalle.as_view(), name='Detaie'),
+    path(r'^(?P<pk>\d+)$', views.EquipoDetalle.as_view(), name='Detail'),
     path(r'^nuevo$', views.EquipoCreacion.as_view(), name='New'),
     path(r'^editar/(?P<pk>\d+)$', views.EquipoUpdate.as_view(), name='Edit'),
     path(r'^borrar/(?P<pk>\d+)$', views.EquipoDelete.as_view(), name='Delete'),
@@ -28,6 +28,6 @@ urlpatterns = [
     path('logout', LogoutView.as_view(template_name='AppBlog/logout.html'), name='Logout'),
     path('register', views.register, name = 'Register'),
     path("editarUsuario", views.editarUsuario, name="EditarUsuario"),
-    path('agregarImagen/', views.agregarImagen, name='Subir Avatar'),
+    path('agregarimagen/', views.agregarImagen, name='Subir Avatar'),
     
 ]
