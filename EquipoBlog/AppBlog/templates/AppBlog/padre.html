@@ -26,7 +26,7 @@
                 <a class="navbar-brand" href="{% url 'ListColaborador' %}">Colaborador</a>
                 <a class="navbar-brand" href="">Publicacion</a>
                 <a class="navbar-brand" href="{% url 'ListaLideres' %}">Lider</a>
-                <a class="navbar-brand" href="{% url 'About' %}">About</a>
+              
 
 
                 {% if user.is_authenticated %}
@@ -40,7 +40,7 @@
 
                     {% endif %}
                 {% endwith %} 
-                
+
                 <a class="navbar-brand" href="{% url 'Subir Avatar' %}">Añadir Avatar</a>
                 <a class="btn btn-primary" href="{% url 'Logout' %}">Cerrar Sesión</a>
                 {% endif %}
