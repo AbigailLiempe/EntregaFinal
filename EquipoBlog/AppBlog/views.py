@@ -147,12 +147,12 @@ def buscar(request):
 
    
 
-    if request.GET['identificacion']:
+    if request.GET['nombre']:
 
-        identificacion = request.GET['identificacion']      #
-        equipos = EquipoFormulario.objects.filter(identificacion__iexact=identificacion)
+        nombre= request.GET['nombre']      #
+        equipos = EquipoFormulario.objects.filter(nombre__iexact=nombre)
 
-        return render(request, "AppBlog/resultadosBusqueda.html", {"equipos":equipos, "identificacion":identificacion})
+        return render(request, "AppBlog/resultadosBusqueda.html", {"equipos":equipos, "nombre":nombre})
 
     else:
 

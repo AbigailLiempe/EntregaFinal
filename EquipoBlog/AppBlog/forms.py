@@ -6,7 +6,7 @@ from AppBlog.models import Avatar
 
 class EquipoFormulario(forms.Form):
 
-    curso = forms.CharField(max_length=30)
+    nombre = forms.CharField(max_length=30)
     identificacion = forms.IntegerField()
     area = forms.IntegerField()
 
