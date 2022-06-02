@@ -197,7 +197,7 @@ def agregarLider(request):
 @login_required
 def borrarLideres(request, lider_nombre):
 
-    lider = LiderFormulario.objects.get(nombre=lider_nombre)
+    lider = Lider.objects.get(nombre=lider_nombre)
     
     lider.delete()
     
