@@ -323,3 +323,6 @@ class ColaboradorLista(LoginRequiredMixin, ListView):
 
 
 
+def VerAbout(request):
+      
+    return render(request, "AppBlog/about.html")

@@ -6,6 +6,12 @@ class Publicaciones(models.Model):
           nombre = models.CharField(max_length=30)
           fechaDePublicacion = models.DateField()
           contenido = models.CharField(max_length=500)
+          
+class About(models.Model):
+          
+          fechaDePublicacion = models.DateField()
+          contenido = models.CharField(max_length=500)
+          
 
 class Avatar(models.Model):
      user = models.ForeignKey(User, on_delete=models.CASCADE)
