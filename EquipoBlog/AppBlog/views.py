@@ -298,21 +298,21 @@ class EquipoDetalle(DetailView):
 class EquipoCreacion(CreateView):
 
     model = EquipoFormulario
-    success_url = "/AppBlog/equipo/lista"
+    success_url = "AppBlog/equipo/lista"
     fields = ['nombre', 'identificacion', 'area']
 
 
 class EquipoUpdate(UpdateView):
 
     model = EquipoFormulario
-    success_url = "/AppBlog/equipo/lista"
+    success_url = "AppBlog/equipo/lista"
     fields = ['nombre', 'identificacion', 'area']
 
 
 class EquipoDelete(DeleteView):
 
     model = EquipoFormulario
-    success_url = "/AppBlog/equipo/lista"
+    success_url = "AppBlog/equipo/lista"
 
 
 
