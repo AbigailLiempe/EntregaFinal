@@ -243,7 +243,7 @@ def editarLideres(request, lider_nombre, lider=None):
 
 def listaLideres(request):
 
-    lideres = LiderFormulario.objects.all() 
+    lideres = Lider.objects.all() 
 
 
     contexto = {"Lider":lideres}
