@@ -124,7 +124,7 @@ def agregarEquipo(request):
 @login_required
 def agregarPublicacion(request):
 
-    return render(request, "AppCoder/publicacion.html")
+    return render(request, "AppBlog/publicacion.html")
 
 
 
