@@ -284,34 +284,34 @@ def editarUsuario(request):
 #Equipos
 class EquipoList(LoginRequiredMixin, ListView):
 
-    model = EquipoFormulario
+    model = Equipo
     template_name = "AppBlog/listaEquipo.html"
 
 
 class EquipoDetalle(DetailView):
 
-    model = EquipoFormulario
+    model = Equipo
     template_name = "AppBlog/equipoDetalle.html"
 
 
 
 class EquipoCreacion(CreateView):
 
-    model = EquipoFormulario
+    model = Equipo
     success_url = "AppBlog/equipo/lista"
     fields = ['nombre', 'identificacion', 'area']
 
 
 class EquipoUpdate(UpdateView):
 
-    model = EquipoFormulario
+    model = Equipo
     success_url = "AppBlog/equipo/lista"
     fields = ['nombre', 'identificacion', 'area']
 
 
 class EquipoDelete(DeleteView):
 
-    model = EquipoFormulario
+    model = Equipo
     success_url = "AppBlog/equipo/lista"
 
 
