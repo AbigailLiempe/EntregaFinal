@@ -79,7 +79,7 @@ def agregarImagen(request):
 
             informacion = miFormulario.cleaned_data
 
-            avatar = AvatarFormulario(user=request.user, imagen=informacion['imagen'])
+            avatar = Avatar(user=request.user, imagen=informacion['imagen'])
 
             avatar.save()
 
