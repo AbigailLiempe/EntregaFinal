@@ -30,6 +30,6 @@ urlpatterns = [
     path('logout', LogoutView.as_view(template_name='AppBlog/logout.html'), name='Logout'),
     path('register', views.register, name = 'Register'),
     path("editarUsuario", views.editarUsuario, name="EditarUsuario"),
-    path('agregarimagen/', views.agregarImagen, name='Subir Avatar'),
+    path('agregarImagen/', views.agregarImagen, name='Subir Avatar'),
     
 ]
