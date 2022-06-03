@@ -107,9 +107,9 @@ def agregarEquipo(request):
 
             informacion = miFormulario.cleaned_data
 
-            curso = EquipoFormulario(nombre=informacion['nombre'], identificacion=informacion['identificacion'], area=informacion['area'])  
+            equip = EquipoFormulario(nombre=informacion['nombre'], identificacion=informacion['identificacion'], area=informacion['area'])  
 
-            curso.save()
+            equip.save()
 
             return render(request, "AppBlog/inicio.html")  
 
