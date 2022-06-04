@@ -28,17 +28,17 @@ def login_request(request):
                 login(request, user)   
 
                 
-                return render(request, "AppBlog/inicio.html", {'mensaje':f"Que bueno que llegaste {user}"}) 
+                return render(request, 'AppBlog/inicio.html', {'mensaje':f'Que bueno que llegaste {user}'}) 
 
         else:   
     
-            return render(request, "AppBlog/inicio.html", {'mensaje':"Esos datos no son, fijate de nuevo porfa"})
+            return render(request, 'AppBlog/inicio.html', {'mensaje':'Esos datos no son, fijate de nuevo porfa'})
 
     else:
             
         form = AuthenticationForm() 
 
-    return render(request, "AppBlog/login.html", {'form':form})  
+    return render(request, 'AppBlog/login.html', {'form':form})  
 
 
 def register(request):
@@ -52,21 +52,21 @@ def register(request):
             user=form.cleaned_data['username']
             form.save()
             
-            return render(request, "AppBlog/inicio.html", {'mensaje':"Epa! que nombre, no tenemos en ese color"})
+            return render(request, 'AppBlog/inicio.html', {'mensaje':'Epa! que nombre, no tenemos en ese color'})
     
     else:
 
         form = RegistroFormulario()   
     
     
-    return render(request, "AppBlog/registro.html", {'form':form})
+    return render(request, 'AppBlog/registro.html', {'form':form})
 
 
 @login_required
 def inicio(request):
 
 
-    return render(request,"AppBlog/inicio.html")
+    return render(request,'AppBlog/inicio.html')
 
 
 @login_required
@@ -83,13 +83,13 @@ def agregarImagen(request):
 
             avatar.save()
 
-            return render(request, "AppBlog/inicio.html")
+            return render(request, 'AppBlog/inicio.html')
 
     else:
 
         miFormulario = AvatarFormulario()
     
-    return render(request, "AppBlog/agregarImg.html", {'form':miFormulario})
+    return render(request, 'AppBlog/agregarImg.html', {'form':miFormulario})
 
 
 
@@ -111,36 +111,36 @@ def agregarEquipo(request):
 
             equip.save()
 
-            return render(request, "AppBlog/inicio.html")  
+            return render(request, 'AppBlog/inicio.html')  
 
     else:
 
         miFormulario = EquipoFormulario()   
-    dict1={"miFormulario":miFormulario}
+    dict1={'miFormulario':miFormulario}
 
-    return render(request, "AppBlog/equipo_form.html", dict1)
+    return render(request, 'AppBlog/equipo_form.html', dict1)
 
 
 @login_required
 def agregarPublicacion(request):
 
-    return render(request, "AppBlog/publicacion.html")
+    return render(request, 'AppBlog/publicacion.html')
 
 
 
 @login_required
 def agregarColaborador(request):
 
-    return render(request, "AppBlog/colaborador.html")
+    return render(request, 'AppBlog/colaborador.html')
 
 def about(request):
       
-    return render(request, "AppBlog/about.html")
+    return render(request, 'AppBlog/about.html')
 
 @login_required
 def busquedaEquipo(request):
 
-    return render(request, "AppBlog/busquedaEquipo.html")
+    return render(request, 'AppBlog/busquedaEquipo.html')
 
 @login_required
 def buscar(request):
@@ -152,11 +152,11 @@ def buscar(request):
         nombre= request.GET['nombre']      #
         equipos = Equipo.objects.filter(nombre__iexact=nombre)
 
-        return render(request, "AppBlog/resultadosBusqueda.html", {"equipos":equipos, "nombre":nombre})
+        return render(request, 'AppBlog/resultadosBusqueda.html', {'equipos':equipos, 'nombre':nombre})
 
     else:
 
-        respuesta="Che! como que faltan cosas."
+        respuesta='Che! como que faltan cosas.'
     
     return HttpResponse(respuesta)
 
@@ -181,7 +181,7 @@ def agregarLider(request):
 
             profe.save()
 
-            return render(request, "AppBlog/inicio.html")
+            return render(request, 'AppBlog/inicio.html')
 
     else:
 
@@ -189,7 +189,7 @@ def agregarLider(request):
 
     dict1={'myForm':miFormulario}
 
-    return render(request,"AppBlog/lider.html", dict1)
+    return render(request,'AppBlog/lider.html', dict1)
 
 
 
@@ -203,9 +203,9 @@ def borrarLideres(request, lider_nombre):
     
     lideres = lider.objects.all()
 
-    contexto={"lideres":lideres}
+    contexto={'lideres':lideres}
 
-    return render(request, "AppBlog/leerLideres.html",contexto)
+    return render(request, 'AppBlog/leerLideres.html',contexto)
 
 
 @login_required
@@ -213,7 +213,7 @@ def editarLideres(request, lider_nombre, lider=None):
 
     lider = lider.objects.get(nombre=lider_nombre)
 
-    if request.method == "POST":
+    if request.method == 'POST':
 
         miFormulario = LiderFormulario(request.POST)
 
@@ -228,14 +228,14 @@ def editarLideres(request, lider_nombre, lider=None):
 
             lider.save()
 
-            return render(request, "AppBlog/inicio.html")
+            return render(request, 'AppBlog/inicio.html')
 
     else:
 
         miFormulario= LiderFormulario(initial={'nombre':lider.nombre, 'apellido':lider.apellido,
         'email':lider.email, 'area':lider.area})
 
-    return render(request, "AppBlog/editarLider.html",{'miFormulario':miFormulario, 'lider_nombre':lider_nombre})
+    return render(request, 'AppBlog/editarLider.html',{'miFormulario':miFormulario, 'lider_nombre':lider_nombre})
 
 
 
@@ -246,8 +246,8 @@ def listaLideres(request):
     lideres = Lider.objects.all() 
 
 
-    contexto = {"Lider":lideres}
-    return render(request, "AppBlog/leerLideres.html",contexto)
+    contexto = {'Lider':lideres}
+    return render(request, 'AppBlog/leerLideres.html',contexto)
 
 
 
@@ -257,7 +257,7 @@ def listaLideres(request):
 def editarUsuario(request):
 
     usuario = request.user 
-    if request.method == "POST":   
+    if request.method == 'POST':   
 
         miFormulario = RegistroFormulario(request.POST) 
 
@@ -272,57 +272,57 @@ def editarUsuario(request):
             usuario.password2 = informacion['password1']
             usuario.save()
 
-            return render(request, "AppBlog/inicio.html")
+            return render(request, 'AppBlog/inicio.html')
 
     else:
 
         miFormulario= RegistroFormulario(initial={'username':usuario.username, 'email':usuario.email})
 
-    return render(request, "AppBlog/editarUsuario.html",{'miFormulario':miFormulario, 'usuario':usuario.username})
+    return render(request, 'AppBlog/editarUsuario.html',{'miFormulario':miFormulario, 'usuario':usuario.username})
 
 
 #Equipos
 class EquipoList(LoginRequiredMixin, ListView):
 
     model = Equipo
-    template_name = "AppBlog/listaEquipo.html"
+    template_name = 'AppBlog/listaEquipo.html'
 
 
 class EquipoDetalle(DetailView):
 
     model = Equipo
-    template_name = "AppBlog/equipoDetalle.html"
+    template_name = 'AppBlog/equipoDetalle.html'
 
 
 
 class EquipoCreacion(CreateView):
 
     model = Equipo
-    success_url = "AppBlog/equipo/lista"
+    success_url = 'AppBlog/equipo/lista'
     fields = ['nombre', 'identificacion', 'area']
 
 
 class EquipoUpdate(UpdateView):
 
     model = Equipo
-    success_url = "AppBlog/equipo/lista"
+    success_url = 'AppBlog/equipo/lista'
     fields = ['nombre', 'identificacion', 'area']
 
 
 class EquipoDelete(DeleteView):
 
     model = Equipo
-    success_url = "AppBlog/equipo/lista"
+    success_url = 'AppBlog/equipo/lista'
 
 
 
 class ColaboradorLista(LoginRequiredMixin, ListView):
 
     model = Colaborador
-    template_name = "AppBlog/listacolaborador.html"
+    template_name = 'AppBlog/listacolaborador.html'
 
 
 
 def VerAbout(request):
       
-    return render(request, "AppBlog/about.html")
+    return render(request, 'AppBlog/about.html')
