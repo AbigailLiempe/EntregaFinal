@@ -118,7 +118,7 @@ def agregarEquipo(request):
         miFormulario = EquipoFormulario()   
     dict1={"miFormulario":miFormulario}
 
-    return render(request, "AppBlog/curso.html", dict1)
+    return render(request, "AppBlog/equipo_form.html", dict1)
 
 
 @login_required
@@ -150,7 +150,7 @@ def buscar(request):
     if request.GET['nombre']:
 
         nombre= request.GET['nombre']      #
-        equipos = EquipoFormulario.objects.filter(nombre__iexact=nombre)
+        equipos = Equipo.objects.filter(nombre__iexact=nombre)
 
         return render(request, "AppBlog/resultadosBusqueda.html", {"equipos":equipos, "nombre":nombre})
 
