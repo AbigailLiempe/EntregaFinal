@@ -3,9 +3,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Publicaciones(models.Model):
-          nombre = models.CharField(max_length=30)
-          fechaDePublicacion = models.DateField()
-          contenido = models.CharField(max_length=500)
+    autor = models.CharField(max_length = 30)
+    titulo = models.CharField(max_length = 100)
+    contenido = models.TextField()
+    
+   
           
 class About(models.Model):
           

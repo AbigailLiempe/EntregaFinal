@@ -12,10 +12,10 @@ class EquipoFormulario(forms.Form):
 
 class LiderFormulario(forms.Form):
 
-    nombre = forms.CharField()
-    apellido = forms.CharField()
+    nombre = forms.CharField(max_length=30)
+    apellido = forms.CharField(max_length=30)
     email = forms.EmailField()
-    area = forms.CharField()
+    area = forms.CharField(max_length=30)
 
 class RegistroFormulario(UserCreationForm):
 
@@ -35,3 +35,8 @@ class AvatarFormulario(forms.ModelForm):
 
         model = Avatar
         fields = ['user', 'imagen']
+        
+        
+class PubliForm(forms.Form):
+      
+    contenido = forms.CharField(max_length=30)        

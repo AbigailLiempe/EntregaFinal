@@ -1,4 +1,4 @@
-from AppBlog.forms import EquipoFormulario, LiderFormulario, RegistroFormulario, AvatarFormulario
+from AppBlog.forms import EquipoFormulario, LiderFormulario, RegistroFormulario, AvatarFormulario,PubliForm
 from AppBlog.models import Equipo, Lider, Avatar, Colaborador
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
