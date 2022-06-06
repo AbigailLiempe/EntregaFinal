@@ -7,7 +7,7 @@ from .models import *
 
 admin.site.register(Equipo)
 admin.site.register(Lider)
-admin.site.register(Publicaciones)
+admin.site.register(Publicacion)
 admin.site.register(Colaborador)
 admin.site.register(Avatar)
 admin.site.register(About)

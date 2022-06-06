@@ -1,5 +1,5 @@
 from AppBlog.forms import EquipoFormulario, LiderFormulario, RegistroFormulario, AvatarFormulario,PubliForm
-from AppBlog.models import Equipo, Lider, Avatar, Colaborador, About
+from AppBlog.models import Equipo, Lider, Avatar, Colaborador, About, Publicacion
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
@@ -125,7 +125,7 @@ def agregarEquipo(request):
 
 
 @login_required
-def agregarPublicacion(request):
+def publicar(request):
     current_user = get_object_or_404(User, pk=request.user.pk)
     if request.method == 'POST':
               miFormulario = PubliForm(request.POST)
@@ -134,11 +134,16 @@ def agregarPublicacion(request):
                         post.user = current_user
                         post.save()
                         messages.success(request, 'Publicacion enviada')
-                        return render(request, 'AppBlog/inicio.html')
+                        return render(request, 'feed')
     else:
         miFormulario= PubliForm()
         return render(request, 'AppBlog/publicacion.html', {'form' : miFormulario})
 
+
+def feed(request):
+    posts = Publicacion.objects.all() 
+    context = { 'posts': posts}
+    return render(request, 'AppBlog/feed.html', context)
 
 @login_required
 def agregarColaborador(request):

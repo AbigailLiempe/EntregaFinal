@@ -4,10 +4,9 @@ from time import time
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-
 from django.forms import DateField
 
-class Publicaciones(models.Model):
+class Publicacion(models.Model):
    nombre = models.ForeignKey(User, on_delete=models.CASCADE, related_name='publicacion')
    timestamp = models.DateTimeField(default=timezone.now)
    contenido = models.TextField()
