@@ -1,17 +1,29 @@
+from sqlite3 import Timestamp
 from tabnanny import verbose
+from time import time
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+
+from django.forms import DateField
 
 class Publicaciones(models.Model):
-    autor = models.CharField(max_length = 30)
-    titulo = models.CharField(max_length = 100)
-    contenido = models.TextField()
-    
+   nombre = models.ForeignKey(User, on_delete=models.CASCADE, related_name='publicacion')
+   timestamp = models.DateTimeField(default=timezone.now)
+   contenido = models.TextField()
+
+   class Meta:
+           ordering=['-timestamp']  
+           def __str__(self):
+                      return f'{self.user.username}: {self.content}'
+        
+ 
+ 
    
           
 class About(models.Model):
           
-          fechaDePublicacion = models.DateField()
+        
           contenido = models.CharField(max_length=500)
           
 
@@ -48,8 +60,6 @@ class Colaborador(models.Model):
 class Lider(models.Model):
 
 
-    def __str__(self):
-        return f"Nombre: {self.nombre} - Apellido: {self.apellido} - Area: {self.area} - Email: {self.email} "
 
 
     nombre = models.CharField(max_length=30)
@@ -61,5 +71,8 @@ class Lider(models.Model):
     class Meta:
         verbose_name = "Lider"
         verbose_name_plural = "Lideres"
+    def __str__(self):
+              return f"Nombre: {self.nombre} - Apellido: {self.apellido} - Area: {self.area} - Email: {self.email} "
+        
 
 

@@ -1,14 +1,17 @@
 from AppBlog.forms import EquipoFormulario, LiderFormulario, RegistroFormulario, AvatarFormulario,PubliForm
-from AppBlog.models import Equipo, Lider, Avatar, Colaborador
+from AppBlog.models import Equipo, Lider, Avatar, Colaborador, About
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib import messages
+from django.contrib.auth.models import User
+
 
 
 
@@ -123,9 +126,18 @@ def agregarEquipo(request):
 
 @login_required
 def agregarPublicacion(request):
-
-    return render(request, 'AppBlog/publicacion.html')
-
+    current_user = get_object_or_404(User, pk=request.user.pk)
+    if request.method == 'POST':
+              miFormulario = PubliForm(request.POST)
+              if miFormulario.is_valid():
+                        post =miFormulario.save(commit=False)
+                        post.user = current_user
+                        post.save()
+                        messages.success(request, 'Publicacion enviada')
+                        return render(request, 'AppBlog/inicio.html')
+    else:
+        miFormulario= PubliForm()
+        return render(request, 'AppBlog/publicacion.html', {'form' : miFormulario})
 
 
 @login_required

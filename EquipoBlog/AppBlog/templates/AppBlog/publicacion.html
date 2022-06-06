@@ -1,48 +1,12 @@
-
-
 {% extends "AppBlog/padre.html" %}
     
+{% block content %}
 
-{% block contenidoModificable %}
-    <h1>publicacion</h1>
-{% endblock %}
-
-{% block contenidoAvatar %}
-
-
-
-{% endblock %}
-
-{% block contenido2 %}
-
-
-
-    
-    <a href="{% url 'New' %}">Agregar publicacion</a>
-
-    <ul>
-
-        {% for publi in object_list %} 
-
-        <li>
-
-            <p>Nombre: {{publi.nombre}}</p>
-
-            <p>
-
-                <a href="{% url 'Publicacion' %}">Ver</a>
-
-
-
-
-            </p>
-
-
-        </li>
-
-        {% endfor %}
-
-
-    </ul>
+<form method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="subir" class="publicar" id="" >Post!</button>
+	
+</form>
 
 {% endblock %}

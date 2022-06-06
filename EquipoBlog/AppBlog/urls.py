@@ -9,7 +9,7 @@ urlpatterns = [
     
     
     path('addColaborador/', views.agregarColaborador, name='addColaboradores'),
-    path('addPublicacion/', views.agregarPublicacion, name='Publicacion'),
+    path('addPublicacion', views.agregarPublicacion, name='Publicacion'),
     path('colab/lista', views.ColaboradorLista.as_view(), name='ListColaborador'),
     path('vAbout/', views.VerAbout, name='About'),
 

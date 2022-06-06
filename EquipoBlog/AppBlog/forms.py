@@ -1,7 +1,9 @@
+from dataclasses import field
+from pyexpat import model
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from AppBlog.models import Avatar
+from AppBlog.models import Avatar, Publicaciones
 
 
 class EquipoFormulario(forms.Form):
@@ -37,6 +39,11 @@ class AvatarFormulario(forms.ModelForm):
         fields = ['user', 'imagen']
         
         
-class PubliForm(forms.Form):
+class PubliForm(forms.ModelForm):
       
-    contenido = forms.CharField(max_length=30)        
+    contenido = forms.CharField(label='',widget=forms.Textarea(attrs={'rows':2,'placeholder':'Info'}),required=True)   
+    
+    class Meta:
+        model = Publicaciones
+        fields = ['contenido'] 
+        
